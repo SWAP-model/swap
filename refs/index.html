@@ -1,0 +1,1401 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../wiki/input-files/bbc-file/">
+      
+      
+        <link rel="next" href="../ford_docs/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Swap in action - SWAP hydrological model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#swap_in_action" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SWAP hydrological model" class="md-header__button md-logo" aria-label="SWAP hydrological model" data-md-component="logo">
+      
+  <img src="../public/SWAP_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SWAP hydrological model
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Swap in action
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../getting-started/" class="md-tabs__link">
+        
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../wiki/input-files/input-files/" class="md-tabs__link">
+          
+  
+  Wiki
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Swap in action
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ford_docs/" class="md-tabs__link">
+        
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SWAP hydrological model" class="md-nav__button md-logo" aria-label="SWAP hydrological model" data-md-component="logo">
+      
+  <img src="../public/SWAP_icon.png" alt="logo">
+
+    </a>
+    SWAP hydrological model
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Wiki
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wiki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wiki/input-files/input-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SWAP model input files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wiki/input-files/swp-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .SWP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wiki/input-files/met-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .MET
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wiki/input-files/crp-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .CRP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wiki/input-files/dra-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .DRA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wiki/input-files/bbc-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .BBC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Swap in action
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ford_docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="swap_in_action">SWAP in action<a class="headerlink" href="#swap_in_action" title="Permanent link">&para;</a></h1>
+<p>Below you can find the list of publications that are relevant for SWAP.</p>
+<hr />
+<p>Alavi, S.A., A.A. Naseri, H. Ritzema, J. van Dam, and P. Hellegers. 2022. A combined model approach to optimize surface irrigation practice:
+SWAP and WinSRFR. Agricultural Water Management 271: 107741. doi:
+<a href="https://doi.org/10.1016/j.agwat.2022.107741">10.1016/j.agwat.2022.107741</a>.</p>
+<p>Ali, A., Y.A. Al-Mulla, Y. Charabi, M. Al-Wardy, and G. Al-Rawas. 2021.
+Use of multispectral and thermal satellite imagery to determine crop
+water requirements using SEBAL, METRIC, and SWAP models in hot and
+hyper-arid oman. Arabian Journal of Geosciences 14(7). doi:
+<a href="https://doi.org/10.1007/s12517-021-06948-0">10.1007/s12517-021-06948-0</a>.</p>
+<p>Alves Rodrigues Pinheiro, E., and Q. de Jong van Lier. 2021. Propagation
+of uncertainty of soil hydraulic parameterization in the prediction of
+water balance components: A stochastic analysis in kaolinitic clay
+soils. Geoderma 388: 114910. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2020.114910">10.1016/j.geoderma.2020.114910</a>.</p>
+<p>Alves Rodrigues Pinheiro, E., and M.R. Nunes. 2023. Long-term
+agro-hydrological simulations of soil water dynamic and maize yield in a
+tillage chronosequence under subtropical climate conditions. Soil and
+Tillage Research 229: 105654. doi:
+<a href="https://doi.org/10.1016/j.still.2023.105654">10.1016/j.still.2023.105654</a>.</p>
+<p>Anupoju, V., B.P. Kambhammettu, and S.K. Regonda. 2021. Role of
+short-term weather forecast horizon in irrigation scheduling and crop
+water productivity of rice. Journal of Water Resources Planning and
+Management 147(8). doi:
+<a href="https://doi.org/10.1061/(asce)wr.1943-5452.0001406">10.1061/(asce)wr.1943-5452.0001406</a>.</p>
+<p>Auwalu, A., and J.H. Abdulkareem. 2023. Plant morphological structures
+as influenced by soil hydraulic properties: A review. Communications in
+Soil Science and Plant Analysis 54(21): 2915–2938. doi:
+<a href="https://doi.org/10.1080/00103624.2023.2253848">10.1080/00103624.2023.2253848</a>.</p>
+<p>Bartholomeus, R.P., J.H. Stagge, L.M. Tallaksen, and J.P.M. Witte. 2015.
+Sensitivity of potential evaporation estimates to 100 years of climate
+variability. Hydrology and Earth System Sciences 19(2): 997–1014. doi:
+<a href="https://doi.org/10.5194/hess-19-997-2015">10.5194/hess-19-997-2015</a>.</p>
+<p>Bartholomeus, R.P., J.-P.M. Witte, P.M. van Bodegom, J.C. van Dam, and
+R. Aerts. 2008. Critical soil conditions for oxygen stress to plant
+roots: Substituting the feddes-function by a process-based model.
+Journal of Hydrology 360(1–4): 147–165. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2008.07.029">10.1016/j.jhydrol.2008.07.029</a>.</p>
+<p>Bartholomeus, R.P., J.-P.M. Witte, P.M. van Bodegom, J.C. van Dam, and
+R. Aerts. 2011. Climate change threatens endangered plant species by
+stronger and interacting water-related stresses. Journal of Geophysical
+Research 116(G4). doi:
+<a href="https://doi.org/10.1029/2011jg001693">10.1029/2011jg001693</a>.</p>
+<p>Belmans, C., J.G. Wesseling, and R.A. Feddes. 1983. Simulation model of
+the water balance of a cropped soil: SWATRE. Journal of Hydrology
+63(3–4): 271–286. doi:
+<a href="https://doi.org/10.1016/0022-1694(83)90045-8">10.1016/0022-1694(83)90045-8</a>.</p>
+<p>Ben-Asher, J., J. van Dam, R.A. Feddes, and R.K. Jhorar. 2006.
+Irrigation of grapevines with saline water. Agricultural Water
+Management 83(1–2): 22–29. doi:
+<a href="https://doi.org/10.1016/j.agwat.2005.11.006">10.1016/j.agwat.2005.11.006</a>.</p>
+<p>Bennett, S.J., T.F.A. Bishop, and R.W. Vervoort. 2013. Using SWAP to
+quantify space and time related uncertainty in deep drainage model
+estimates: A case study from northern NSW, australia. Agricultural Water
+Management 130: 142–153. doi:
+<a href="https://doi.org/10.1016/j.agwat.2013.08.020">10.1016/j.agwat.2013.08.020</a>.</p>
+<p>Berg, F. van den, A. Tiktak, G.B.M. Heuvelink, S.L.G.E. Burgers, D.J.
+Brus, et al. 2012. Propagation of uncertainties in soil and pesticide
+properties to pesticide leaching. Journal of Environmental Quality
+41(1): 253–261. doi:
+<a href="https://doi.org/10.2134/jeq2011.0167">10.2134/jeq2011.0167</a>.</p>
+<p>Bessembinder, J.J.E., P.A. Leffelaar, A.S. Dhindwal, and T.C. Ponsioen. 2005. Which crop and which drop, and the scope for improvement of water
+productivity. Agricultural Water Management 73(2): 113–130. doi:
+<a href="https://doi.org/10.1016/j.agwat.2004.10.004">10.1016/j.agwat.2004.10.004</a>.</p>
+<p>Bhuyan, M.I., I. Supit, S. Mia, M. Mulder, and F. Ludwig. 2023. Effect
+of soil and water salinity on dry season boro rice production in the
+south-central coastal area of bangladesh. Heliyon 9(8): e19180. doi:
+<a href="https://doi.org/10.1016/j.heliyon.2023.e19180">10.1016/j.heliyon.2023.e19180</a>.</p>
+<p>Bonfante, A., A. Basile, M. Acutis, R. De Mascellis, P. Manna, et al. 2010. SWAP, CropSyst and MACRO comparison in two contrasting soils
+cropped with maize in northern italy. Agricultural Water Management
+97(7): 1051–1062. doi:
+<a href="https://doi.org/10.1016/j.agwat.2010.02.010">10.1016/j.agwat.2010.02.010</a>.</p>
+<p>Bonfante, A., A. Basile, and J. Bouma. 2020. Exploring the effect of
+varying soil organic matter contents on current and future moisture
+supply capacities of six italian soils. Geoderma 361: 114079. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2019.114079">10.1016/j.geoderma.2019.114079</a>.</p>
+<p>Bonfante, A., A. Basile, P. Manna, and F. Terribile. 2011. Use of
+physically based models to evaluate USDA soil moisture classes. Soil
+Science Society of America Journal 75(1): 181–191. doi:
+<a href="https://doi.org/10.2136/sssaj2009.0403">10.2136/sssaj2009.0403</a>.</p>
+<p>Bonfante, A., and J. Bouma. 2015. The role of soil series in
+quantitative land evaluation when expressing effects of climate change
+and crop breeding on future land use. Geoderma 259–260: 187–195. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2015.06.010">10.1016/j.geoderma.2015.06.010</a>.</p>
+<p>Bonfante, A., E. Monaco, G. Langella, P. Mercogliano, E. Bucchignani, et
+al. 2018. A dynamic viticultural zoning to explore the resilience of
+terroir concept under climate change. Science of The Total Environment
+624: 294–308. doi:
+<a href="https://doi.org/10.1016/j.scitotenv.2017.12.035">10.1016/j.scitotenv.2017.12.035</a>.</p>
+<p>Bonfante, A., M.H. Sellami, M.T. Abi Saab, R. Albrizio, A. Basile, et
+al. 2017. The role of soils in the analysis of potential agricultural
+production: A case study in lebanon. Agricultural Systems 156: 67–75.
+doi:
+<a href="https://doi.org/10.1016/j.agsy.2017.05.018">10.1016/j.agsy.2017.05.018</a>.</p>
+<p>Bonfante, A., F. Terribile, and J. Bouma. 2019. Refining physical
+aspects of soil quality and soil health when exploring the effects of
+soil degradation and climate change on biomass production: An italian
+case study. SOIL 5(1): 1–14. doi:
+<a href="https://doi.org/10.5194/soil-5-1-2019">10.5194/soil-5-1-2019</a>.</p>
+<p>Bonten, L.T.C., J.G. Kroes, P. Groenendijk, and B. van der Grift. 2012.
+Modeling diffusive cd and zn contaminant emissions from soils to surface
+waters. Journal of Contaminant Hydrology 138–139: 113–122. doi:
+<a href="https://doi.org/10.1016/j.jconhyd.2012.06.008">10.1016/j.jconhyd.2012.06.008</a>.</p>
+<p>Boogaard, H., J. Wolf, I. Supit, S. Niemeyer, and M. van Ittersum. 2013.
+A regional implementation of WOFOST for calculating yield gaps of
+autumn-sown wheat across the european union. Field Crops Research 143:
+130–142. doi:
+<a href="https://doi.org/10.1016/j.fcr.2012.11.005">10.1016/j.fcr.2012.11.005</a>.</p>
+<p>Chen, S., X. Mao, D.A. Barry, and J. Yang. 2019. Model of crop growth,
+water flow, and solute transport in layered soil. Agricultural Water
+Management 221: 160–174. doi:
+<a href="https://doi.org/10.1016/j.agwat.2019.04.031">10.1016/j.agwat.2019.04.031</a>.</p>
+<p>Chirico, G.B., H. Medina, and N. Romano. 2010. Functional evaluation of
+PTF prediction uncertainty: An application at hillslope scale. Geoderma
+155(3–4): 193–202. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2009.06.008">10.1016/j.geoderma.2009.06.008</a>.</p>
+<p>Cirkel, D.G., J.-P.M. Witte, and S.E.A.T.M. van der Zee. 2010.
+Estimating seepage intensities from groundwater level time series by
+inverse modelling: A sensitivity analysis on wet meadow scenarios.
+Journal of Hydrology 385(1–4): 132–142. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2010.02.009">10.1016/j.jhydrol.2010.02.009</a>.</p>
+<p>Corona-López, E., A.D. Román-Gutiérrez, E.M. Otazo-Sánchez, F.A.
+Guzmán-Ortiz, and O.A. Acevedo-Sandoval. 2021. Water–food nexus
+assessment in agriculture: A systematic review. International Journal of
+Environmental Research and Public Health 18(9): 4983. doi:
+<a href="https://doi.org/10.3390/ijerph18094983">10.3390/ijerph18094983</a>.</p>
+<p>Crescimanno, G., and P. Garofalo. 2005. Application and evaluation of
+the SWAP model for simulating water and solute transport in a cracking
+clay soil. Soil Science Society of America Journal 69(6): 1943–1954.
+doi: <a href="https://doi.org/10.2136/sssaj2005.0051">10.2136/sssaj2005.0051</a>.</p>
+<p>Dam, J.C. van, and R.A. Feddes. 2000. Numerical simulation of
+infiltration, evaporation and shallow groundwater levels with the
+richards equation. Journal of Hydrology 233(1–4): 72–85. doi:
+<a href="https://doi.org/10.1016/s0022-1694(00)00227-4">10.1016/s0022-1694(00)00227-4</a>.</p>
+<p>Dam, J.C. van, P. Groenendijk, R.F.A. Hendriks, and J.G. Kroes. 2008.
+Advances of modeling water flow in variably saturated soils with SWAP.
+Vadose Zone Journal 7(2): 640–653. doi:
+<a href="https://doi.org/10.2136/vzj2007.0060">10.2136/vzj2007.0060</a>.</p>
+<p>Dam, J.C. van, J.H.M. Wösten, and A. Nemes. 1996. Unsaturated soil water
+movement in hysteretic and water repellent field soils. Journal of
+Hydrology 184(3–4): 153–173. doi:
+<a href="https://doi.org/10.1016/0022-1694(95)02996-6">10.1016/0022-1694(95)02996-6</a>.</p>
+<p>Dokoohaki, H., M. Gheysari, S.-F. Mousavi, S. Zand-Parsa, F.E. Miguez,
+et al. 2016. Coupling and testing a new soil water module in DSSAT
+CERES-maize model for maize production under semi-arid condition.
+Agricultural Water Management 163: 90–99. doi:
+<a href="https://doi.org/10.1016/j.agwat.2015.09.002">10.1016/j.agwat.2015.09.002</a>.</p>
+<p>Droogers, P., W.G.M. Bastiaanssen, M. Beyazgül, Y. Kayam, G.W. Kite, et
+al. 2000. Distributed agro-hydrological modeling of an irrigation system
+in western turkey. Agricultural Water Management 43(2): 183–202. doi:
+<a href="https://doi.org/10.1016/s0378-3774(99)00055-4">10.1016/s0378-3774(99)00055-4</a>.</p>
+<p>Droogers, P., A. Van Loon, and W.W. Immerzeel. 2008. Quantifying the
+impact of model inaccuracy in climate change impact assessment studies
+using an agro-hydrological model. Hydrology and Earth System Sciences
+12(2): 669–678. doi:
+<a href="https://doi.org/10.5194/hess-12-669-2008">10.5194/hess-12-669-2008</a>.</p>
+<p>Eberhard, J., N.L.M.B. van Schaik, A. Schibalski, and T. Gräff. 2020.
+Simulating future salinity dynamics in a coastal marshland under
+different climate scenarios. Vadose Zone Journal 19(1). doi:
+<a href="https://doi.org/10.1002/vzj2.20008">10.1002/vzj2.20008</a>.</p>
+<p>Eitzinger, J., M. Trnka, J. Hösch, Z. Žalud, and M. Dubrovský. 2004.
+Comparison of CERES, WOFOST and SWAP models in simulating soil water
+content during growing season under different soil conditions.
+Ecological Modelling 171(3): 223–246. doi:
+<a href="https://doi.org/10.1016/j.ecolmodel.2003.08.012">10.1016/j.ecolmodel.2003.08.012</a>.</p>
+<p>Farmaha, B.S., Pritpal-Singh, and Bijay-Singh. 2021. Spatial and
+temporal assessment of nitrate-n under rice-wheat system in riparian
+wetlands of punjab, north-western india. Agronomy 11(7): 1284. doi:
+<a href="https://doi.org/10.3390/agronomy11071284">10.3390/agronomy11071284</a>.</p>
+<p>Faúndez Urbina, C.A., F. van den Berg, J.C. van Dam, D.W.S. Tang, and
+C.J. Ritsema. 2020. Parameter sensitivity of SWAP–PEARL models for
+pesticide leaching in macroporous soils. Vadose Zone Journal 19(1). doi:
+<a href="https://doi.org/10.1002/vzj2.20075">10.1002/vzj2.20075</a>.</p>
+<p>Feddes, R.A., P. Kabat, P.J.T. Van Bakel, J.J.B. Bronswijk, and J.
+Halbertsma. 1988. Modelling soil water dynamics in the unsaturated zone
+— state of the art. Journal of Hydrology 100(1–3): 69–111. doi:
+<a href="https://doi.org/10.1016/0022-1694(88)90182-5">10.1016/0022-1694(88)90182-5</a>.</p>
+<p>Feddes, R.A., P. Kowalik, K. Kolinska-Malinka, and H. Zaradny. 1976.
+Simulation of field water uptake by plants using a soil water dependent
+root extraction function. Journal of Hydrology 31(1–2): 13–26. doi:
+<a href="https://doi.org/10.1016/0022-1694(76)90017-2">10.1016/0022-1694(76)90017-2</a>.</p>
+<p>Gelsinari, S., V.R.N. Pauwels, E. Daly, J. van Dam, R. Uijlenhoet, et
+al. 2021. Unsaturated zone model complexity for the assimilation of
+evapotranspiration rates in groundwater modelling. Hydrology and Earth
+System Sciences 25(4): 2261–2277. doi:
+<a href="https://doi.org/10.5194/hess-25-2261-2021">10.5194/hess-25-2261-2021</a>.</p>
+<p>Hack-ten Broeke, M.J.D. 2001. Irrigation management for optimizing crop
+production and nitrate leaching on grassland. Agricultural Water
+Management 49(2): 97–114. doi:
+<a href="https://doi.org/10.1016/s0378-3774(00)00141-4">10.1016/s0378-3774(00)00141-4</a>.</p>
+<p>Hack-ten Broeke, M.J.D., J.G. Kroes, R.P. Bartholomeus, J.C. van Dam,
+A.J.W. de Wit, et al. 2016. Quantification of the impact of hydrology on
+agricultural production as a result of too dry, too wet or too saline
+conditions. SOIL 2(3): 391–402. doi:
+<a href="https://doi.org/10.5194/soil-2-391-2016">10.5194/soil-2-391-2016</a>.</p>
+<p>Hack-ten Broeke, M.J.D., H.M. Mulder, R.P. Bartholomeus, J.C. van Dam,
+G. Holshof, et al. 2019. Quantitative land evaluation implemented in
+dutch water management. Geoderma 338: 536–545. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2018.11.002">10.1016/j.geoderma.2018.11.002</a>.</p>
+<p>Hamada, K., H. Inoue, H. Mochizuki, M. Asakura, Y. Shimizu, et al. 2020.
+Evaluating maize drought and wet stress in a converted japanese paddy
+field using a SWAP model. Water 12(5): 1363. doi:
+<a href="https://doi.org/10.3390/w12051363">10.3390/w12051363</a>.</p>
+<p>Hamada, K., H. Inoue, H. Mochizuki, T. Miyamoto, M. Asakura, et al. 2021. Effect of hardpan on the vertical distribution of water stress in
+a converted paddy field. Soil and Tillage Research 214: 105161. doi:
+<a href="https://doi.org/10.1016/j.still.2021.105161">10.1016/j.still.2021.105161</a>.</p>
+<p>Hao, F., S. Chen, W. Ouyang, Y. Shan, and S. Qi. 2013. Temporal rainfall
+patterns with water partitioning impacts on maize yield in a freeze–thaw
+zone. Journal of Hydrology 486: 412–419. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2013.02.008">10.1016/j.jhydrol.2013.02.008</a>.</p>
+<p>Hassanli, M., H. Ebrahimian, E. Mohammadi, A. Rahimi, and A. Shokouhi. 2016. Simulating maize yields when irrigating with saline water, using
+the AquaCrop, SALTMED, and SWAP models. Agricultural Water Management
+176: 91–99. doi:
+<a href="https://doi.org/10.1016/j.agwat.2016.05.003">10.1016/j.agwat.2016.05.003</a>.</p>
+<p>Heinen, M., M. Mulder, J. van Dam, R. Bartholomeus, Q. de Jong van Lier,
+et al. 2024. SWAP 50 years: Advances in modelling
+soil-water-atmosphere-plant interactions. Agricultural Water Management
+298: 108883. doi:
+<a href="https://doi.org/10.1016/j.agwat.2024.108883">10.1016/j.agwat.2024.108883</a>.</p>
+<p>Huang, X., C. Yu, J. Fang, G. Huang, S. Ni, et al. 2018. A dynamic
+agricultural prediction system for large-scale drought assessment on the
+sunway TaihuLight supercomputer. Computers and Electronics in
+Agriculture 154: 400–410. doi:
+<a href="https://doi.org/10.1016/j.compag.2018.07.027">10.1016/j.compag.2018.07.027</a>.</p>
+<p>Hupet, F., J.C. van Dam, and M. Vanclooster. 2004. Impact of
+within‐field variability in soil hydraulic properties on transpiration
+fluxes and crop yields: A numerical study. Vadose Zone Journal 3(4):
+1367–1379. doi:
+<a href="https://doi.org/10.2136/vzj2004.1367">10.2136/vzj2004.1367</a>.</p>
+<p>Hupet, F., S. Lambot, R.A. Feddes, J.C. van Dam, and M. Vanclooster. 2003. Estimation of root water uptake parameters by inverse modeling
+with soil water content data. Water Resources Research 39(11). doi:
+<a href="https://doi.org/10.1029/2003wr002046">10.1029/2003wr002046</a>.</p>
+<p>Hu, S., L. Shi, K. Huang, Y. Zha, X. Hu, et al. 2019. Improvement of
+sugarcane crop simulation by SWAP-WOFOST model via data assimilation.
+Field Crops Research 232: 49–61. doi:
+<a href="https://doi.org/10.1016/j.fcr.2018.12.009">10.1016/j.fcr.2018.12.009</a>.</p>
+<p>Hu, S., L. Shi, Y. Zha, M. Williams, and L. Lin. 2017. Simultaneous
+state-parameter estimation supports the evaluation of data assimilation
+performance and measurement design for soil-water-atmosphere-plant
+system. Journal of Hydrology 555: 812–831. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2017.10.061">10.1016/j.jhydrol.2017.10.061</a>.</p>
+<p>Immerzeel, W.W., C.C. van Heerwaarden, and P. Droogers. 2009. Modelling
+climate change in a dutch polder system using the FutureViewR modelling
+suite. Computers &amp; Geosciences 35(3): 446–458. doi:
+<a href="https://doi.org/10.1016/j.cageo.2008.04.010">10.1016/j.cageo.2008.04.010</a>.</p>
+<p>Inforsato, L., and Q. de Jong van Lier. 2021. Polynomial functions to
+predict flux-based field capacity from soil hydraulic parameters.
+Geoderma 404: 115308. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2021.115308">10.1016/j.geoderma.2021.115308</a>.</p>
+<p>Ismail, H., M.R. Kamal, A.F. bin Abdullah, and M.S.F. bin Mohd. 2020.
+Climate-smart agro-hydrological model for a large scale rice irrigation
+scheme in malaysia. Applied Sciences 10(11): 3906. doi:
+<a href="https://doi.org/10.3390/app10113906">10.3390/app10113906</a>.</p>
+<p>Jhorar, R.K., W.G.M. Bastiaanssen, R.A. Feddes, and J.C. Van Dam. 2002.
+Inversely estimating soil hydraulic functions using evapotranspiration
+fluxes. Journal of Hydrology 258(1–4): 198–213. doi:
+<a href="https://doi.org/10.1016/s0022-1694(01)00564-9">10.1016/s0022-1694(01)00564-9</a>.</p>
+<p>Jiang, J., S. Feng, Z. Huo, Z. Zhao, and B. Jia. 2011. Application of
+the SWAP model to simulate water–salt transport under deficit irrigation
+with saline water. Mathematical and Computer Modelling 54(3–4): 902–911.
+doi:
+<a href="https://doi.org/10.1016/j.mcm.2010.11.014">10.1016/j.mcm.2010.11.014</a>.</p>
+<p>Jiang, Y., L. Xiong, Z. Xu, and G. Huang. 2021. A simulation-based
+optimization model for watershed multi-scale irrigation water use with
+considering impacts of climate changes. Journal of Hydrology 598: 126395. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2021.126395">10.1016/j.jhydrol.2021.126395</a>.</p>
+<p>Jiang, Y., X. Xu, Q. Huang, Z. Huo, and G. Huang. 2015. Assessment of
+irrigation performance and water productivity in irrigated areas of the
+middle heihe river basin using a distributed agro-hydrological model.
+Agricultural Water Management 147: 67–81. doi:
+<a href="https://doi.org/10.1016/j.agwat.2014.08.003">10.1016/j.agwat.2014.08.003</a>.</p>
+<p>Jiang, Y., X. Xu, Q. Huang, Z. Huo, and G. Huang. 2016. Optimizing
+regional irrigation water use by integrating a two-level optimization
+model and an agro-hydrological model. Agricultural Water Management 178:
+76–88. doi:
+<a href="https://doi.org/10.1016/j.agwat.2016.08.035">10.1016/j.agwat.2016.08.035</a>.</p>
+<p>Jin, H., W. Zhongfu, and G. Shengxiu. 2011. Simulation of water dynamics
+of farmland in the piedmont plain of the taihang mountains in the north
+china plain. Procedia Engineering 12: 66–73. doi:
+<a href="https://doi.org/10.1016/j.proeng.2011.05.012">10.1016/j.proeng.2011.05.012</a>.</p>
+<p>Jong van Lier, Q. de. 2017. Field capacity, a valid upper limit of crop
+available water? Agricultural Water Management 193: 214–220. doi:
+<a href="https://doi.org/10.1016/j.agwat.2017.08.017">10.1016/j.agwat.2017.08.017</a>.</p>
+<p>Jong van Lier, Q. de, J.C. van Dam, A. Durigon, M.A. dos Santos, and K.
+Metselaar. 2013. Modeling water potentials and flows in the soil–plant
+system comparing hydraulic resistances and transpiration reduction
+functions. Vadose Zone Journal 12(3): 1–20. doi:
+<a href="https://doi.org/10.2136/vzj2013.02.0039">10.2136/vzj2013.02.0039</a>.</p>
+<p>Jong van Lier, Q. de, J.C. van Dam, and K. Metselaar. 2009. Root water
+extraction under combined water and osmotic stress. Soil Science Society
+of America Journal 73(3): 862–875. doi:
+<a href="https://doi.org/10.2136/sssaj2008.0157">10.2136/sssaj2008.0157</a>.</p>
+<p>Jong van Lier, Q. de, J.C. van Dam, K. Metselaar, R. de Jong, and W.H.M.
+Duijnisveld. 2008. Macroscopic root water uptake distribution using a
+matric flux potential approach. Vadose Zone Journal 7(3): 1065–1078.
+doi: <a href="https://doi.org/10.2136/vzj2007.0083">10.2136/vzj2007.0083</a>.</p>
+<p>Jong van Lier, Q. de, M.L.A. de Melo, and E.A.R. Pinheiro. 2024.
+Stochastic analysis of plant available water estimates and soil water
+balance components simulated by a hydrological model. Vadose Zone
+Journal 23(3). doi:
+<a href="https://doi.org/10.1002/vzj2.20306">10.1002/vzj2.20306</a>.</p>
+<p>Jong van Lier, Q. de, O. Wendroth, and J.C. van Dam. 2015. Prediction of
+winter wheat yield with the SWAP model using pedotransfer functions: An
+evaluation of sensitivity, parameterization and prediction accuracy.
+Agricultural Water Management 154: 29–42. doi:
+<a href="https://doi.org/10.1016/j.agwat.2015.02.011">10.1016/j.agwat.2015.02.011</a>.</p>
+<p>Kamble, B., and A. Irmak. 2008. <a href="https://doi.org/10.1109/igarss.2008.4779530">Assimilating remote sensing-based ET
+into SWAP model for improved estimation of hydrological
+predictions</a>. IGARSS 2008 -
+2008 IEEE international geoscience and remote sensing symposium. IEEE</p>
+<p>Kapourchal, S.A., A. Abdi, M. Vazifedoust, and M. Rezaei. 2022. SPECIFIC
+LEAF AREA OF RICE (HASHEMI CULTIVAR) AT FIELD SCALE. Environmental
+Engineering and Management Journal 21(12): 2093–2102. doi:
+<a href="https://doi.org/10.30638/eemj.2022.185">10.30638/eemj.2022.185</a>.</p>
+<p>Kersebaum, K., J. Kroes, A. Gobin, J. Takáč, P. Hlavinka, et al. 2016.
+Assessing uncertainties of water footprints using an ensemble of crop
+growth models on winter wheat. Water 8(12): 571. doi:
+<a href="https://doi.org/10.3390/w8120571">10.3390/w8120571</a>.</p>
+<p>Kite, G.W., and P. Droogers. 2000. Comparing evapotranspiration
+estimates from satellites, hydrological models and field data. Journal
+of Hydrology 229(1–2): 3–18. doi:
+<a href="https://doi.org/10.1016/s0022-1694(99)00195-x">10.1016/s0022-1694(99)00195-x</a>.</p>
+<p>Kokoreva, A.A., A.V. Dembovetskiy, Z.S. Ezhelev, A.G. Bolotov, V.M.
+Stepanenko, et al. 2021. Simulating water transport in porous media of
+urban soil. IOP Conference Series: Earth and Environmental Science
+862(1): 012042. doi:
+<a href="https://doi.org/10.1088/1755-1315/862/1/012042">10.1088/1755-1315/862/1/012042</a>.</p>
+<p>Kramers, G., J.C. van Dam, C.J. Ritsema, F. Stagnitti, K. Oostindie, et
+al. 2005. A new modelling approach to simulate preferential flow and
+transport in water repellent porous media: Parameter sensitivity, and
+effects on crop growth and solute leaching. Soil Research 43(3): 371.
+doi: <a href="https://doi.org/10.1071/sr04098">10.1071/sr04098</a>.</p>
+<p>Kroes, J., J. van Dam, I. Supit, D. de Abelleyra, S. Verón, et al. 2019.
+Agrohydrological analysis of groundwater recharge and land use changes
+in the pampas of argentina. Agricultural Water Management 213: 843–857.
+doi:
+<a href="https://doi.org/10.1016/j.agwat.2018.12.008">10.1016/j.agwat.2018.12.008</a>.</p>
+<p>Kroes, J.G., and I. Supit. 2011. Impact analysis of drought, water
+excess and salinity on grass production in the netherlands using
+historical and future climate data. Agriculture, Ecosystems &amp;
+Environment 144(1): 370–381. doi:
+<a href="https://doi.org/10.1016/j.agee.2011.09.008">10.1016/j.agee.2011.09.008</a>.</p>
+<p>Kroes, J., I. Supit, J. Van Dam, P. Van Walsum, and M. Mulder. 2017.
+Impact of capillary rise and recirculation on crop yields. doi:
+<a href="https://doi.org/10.5194/hess-2017-223">10.5194/hess-2017-223</a>.</p>
+<p>Kumar, P., A. Sarangi, D.K. Singh, S.S. Parihar, and R.N. Sahoo. 2015.
+Simulation of salt dynamics in the root zone and yield of wheat crop
+under irrigated saline regimes using SWAP model. Agricultural Water
+Management 148: 72–83. doi:
+<a href="https://doi.org/10.1016/j.agwat.2014.09.014">10.1016/j.agwat.2014.09.014</a>.</p>
+<p>Lee, T., W.S. Jang, B. Chun, M.J. Ahmad, Y. Jung, et al. 2022.
+Development of irrigation schedule and management model for sustaining
+optimal crop production under agricultural drought. Paddy and Water
+Environment 21(1): 31–45. doi:
+<a href="https://doi.org/10.1007/s10333-022-00911-9">10.1007/s10333-022-00911-9</a>.</p>
+<p>LEI, G., W. ZENG, Y. JIANG, C. AO, J. WU, et al. 2021. Sensitivity
+analysis of the SWAP (soil-water-atmosphere-plant) model under different
+nitrogen applications and root distributions in saline soils. Pedosphere
+31(5): 807–821. doi:
+<a href="https://doi.org/10.1016/s1002-0160(21)60038-3">10.1016/s1002-0160(21)60038-3</a>.</p>
+<p>Lier, Q. de J. van, K. Metselaar, and J.C. van Dam. 2006. Root water
+extraction and limiting soil hydraulic conditions estimated by numerical
+simulation. Vadose Zone Journal 5(4): 1264–1277. doi:
+<a href="https://doi.org/10.2136/vzj2006.0056">10.2136/vzj2006.0056</a>.</p>
+<p>Li, Y., L. Liu, and S. Sun. 2022. <a href="https://doi.org/10.1109/vrhciai57205.2022.00028">Study on soil water and salt
+information model of digital
+farmland</a>. 2022
+international conference on virtual reality, human-computer interaction
+and artificial intelligence (VRHCIAI). IEEE</p>
+<p>Li, P., and L. Ren. 2019. Evaluating the effects of limited irrigation
+on crop water productivity and reducing deep groundwater exploitation in
+the north china plain using an agro-hydrological model: II. Scenario
+simulation and analysis. Journal of Hydrology 574: 715–732. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2019.03.034">10.1016/j.jhydrol.2019.03.034</a>.</p>
+<p>Li, P., and L. Ren. 2021. Evaluating the saline water irrigation schemes
+using a distributed agro-hydrological model. Journal of Hydrology 594: 125688. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2020.125688">10.1016/j.jhydrol.2020.125688</a>.</p>
+<p>Li, P., and L. Ren. 2023. Evaluating the differences in irrigation
+methods for winter wheat under limited irrigation quotas in the
+water-food-economy nexus in the north china plain. Agricultural Water
+Management 289: 108497. doi:
+<a href="https://doi.org/10.1016/j.agwat.2023.108497">10.1016/j.agwat.2023.108497</a>.</p>
+<p>Liu, M., A. Bárdossy, J. Li, and Y. Jiang. 2012. Physically-based
+modeling of topographic effects on spatial evapotranspiration and soil
+moisture patterns through radiation and wind. Hydrology and Earth System
+Sciences 16(2): 357–373. doi:
+<a href="https://doi.org/10.5194/hess-16-357-2012">10.5194/hess-16-357-2012</a>.</p>
+<p>Liu, L., Y. Cui, and Y. Luo. 2013. Integrated modeling of conjunctive
+water use in a canal-well irrigation district in the lower yellow river
+basin, china. Journal of Irrigation and Drainage Engineering 139(9):
+775–784. doi:
+<a href="https://doi.org/10.1061/(asce)ir.1943-4774.0000620">10.1061/(asce)ir.1943-4774.0000620</a>.</p>
+<p>Liu, L., Z. Guo, G. Huang, and R. Wang. 2019. Water productivity
+evaluation under multi-GCM projections of climate change in oases of the
+heihe river basin, northwest china. International Journal of
+Environmental Research and Public Health 16(10): 1706. doi:
+<a href="https://doi.org/10.3390/ijerph16101706">10.3390/ijerph16101706</a>.</p>
+<p>Liu, Y., W. Zeng, C. Ao, G. Lei, J. Wu, et al. 2022. Optimization of
+winter irrigation management for salinized farmland using a coupled
+model of soil water flow and crop growth. Agricultural Water Management
+270: 107747. doi:
+<a href="https://doi.org/10.1016/j.agwat.2022.107747">10.1016/j.agwat.2022.107747</a>.</p>
+<p>Ma, Y., S. Feng, Z. Huo, and X. Song. 2011. Application of the SWAP
+model to simulate the field water cycle under deficit irrigation in
+beijing, china. Mathematical and Computer Modelling 54(3–4): 1044–1052.
+doi:
+<a href="https://doi.org/10.1016/j.mcm.2010.11.034">10.1016/j.mcm.2010.11.034</a>.</p>
+<p>Maleki Tirabadi, M.S., M.E. Banihabib, and T.O. Randhir. 2022. An
+integrated framework for simultaneously modeling primary and secondary
+salinity at a watershed scale. Journal of Hydrology 612: 128171. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2022.128171">10.1016/j.jhydrol.2022.128171</a>.</p>
+<p>Marinov, D., E. Querner, and J. Roelsma. 2005. Simulation of water flow
+and nitrogen transport for a bulgarian experimental plot using SWAP and
+ANIMO models. Journal of Contaminant Hydrology 77(3): 145–164. doi:
+<a href="https://doi.org/10.1016/j.jconhyd.2004.12.004">10.1016/j.jconhyd.2004.12.004</a>.</p>
+<p>Melo, M.L.A. de, and Q. de Jong van Lier. 2021. Revisiting the feddes
+reduction function for modeling root water uptake and crop
+transpiration. Journal of Hydrology 603: 126952. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2021.126952">10.1016/j.jhydrol.2021.126952</a>.</p>
+<p>Melo, M.L.A. de, Q. de Jong van Lier, R. Cichota, J.A.P. Pollacco, J.
+Fernández-Gálvez, et al. 2023. Sensitivity analysis of land and water
+productivities predicted with an empirical and a process-based root
+water uptake function. Journal of Hydrology 626: 130241. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2023.130241">10.1016/j.jhydrol.2023.130241</a>.</p>
+<p>Miegel, K., K. Bohne, and G. Wessolek. 2013. Prediction of long-term
+groundwater recharge by using hydropedotransfer functions. International
+Agrophysics 27(1): 31–37. doi:
+<a href="https://doi.org/10.2478/v10247-012-0065-z">10.2478/v10247-012-0065-z</a>.</p>
+<p>Minacapilli, M., C. Agnese, F. Blanda, C. Cammalleri, G. Ciraolo, et al. 2009. Estimation of actual evapotranspiration of mediterranean perennial
+crops by means of remote-sensing based surface energy balance models.
+Hydrology and Earth System Sciences 13(7): 1061–1074. doi:
+<a href="https://doi.org/10.5194/hess-13-1061-2009">10.5194/hess-13-1061-2009</a>.</p>
+<p>Mirbabaei, S.M., M. Shabanpour, J. van Dam, C. Ritsema, A. Zolfaghari,
+et al. 2021. Observation and simulation of water movement and runoff in
+a coarse texture water repellent soil. CATENA 207: 105637. doi:
+<a href="https://doi.org/10.1016/j.catena.2021.105637">10.1016/j.catena.2021.105637</a>.</p>
+<p>Mokhtari, A., H. Noory, A. Balkhi, and S. Alaghmand. 2021. Comparison of
+three different satellite-based approaches for aboveground biomass
+estimation. PFG – Journal of Photogrammetry, Remote Sensing and
+Geoinformation Science 89(1): 33–47. doi:
+<a href="https://doi.org/10.1007/s41064-020-00134-9">10.1007/s41064-020-00134-9</a>.</p>
+<p>Mokhtari, A., H. Noory, and M. Vazifedoust. 2018. Improving crop yield
+estimation by assimilating LAI and inputting satellite-based surface
+incoming solar radiation into SWAP model. Agricultural and Forest
+Meteorology 250–251: 159–170. doi:
+<a href="https://doi.org/10.1016/j.agrformet.2017.12.250">10.1016/j.agrformet.2017.12.250</a>.</p>
+<p>Monaco, E., A. Bonfante, S.M. Alfieri, A. Basile, M. Menenti, et al. 2014. Climate change, effective water use for irrigation and
+adaptability of maize: A case study in southern italy. Biosystems
+Engineering 128: 82–99. doi:
+<a href="https://doi.org/10.1016/j.biosystemseng.2014.09.001">10.1016/j.biosystemseng.2014.09.001</a>.</p>
+<p>Nascimento, F.A.L. do, A.J.P. da Silva, F.T.O. Freitas, R.D.M.
+Fernandes, and L.A. Veimrober Junior. 2022. Sensors and frequencies of
+soil water content measurement affecting agro-hydrological simulations
+and irrigation management. Computers and Electronics in Agriculture 194: 106763. doi:
+<a href="https://doi.org/10.1016/j.compag.2022.106763">10.1016/j.compag.2022.106763</a>.</p>
+<p>Nasta, P., and N. Romano. 2016. Use of a flux‐based field capacity
+criterion to identify effective hydraulic parameters of layered soil
+profiles subjected to synthetic drainage experiments. Water Resources
+Research 52(1): 566–584. doi:
+<a href="https://doi.org/10.1002/2015wr016979">10.1002/2015wr016979</a>.</p>
+<p>Noory, H., S.E.A.T.M. van der Zee, A.-M. Liaghat, M. Parsinejad, and
+J.C. van Dam. 2011. Distributed agro-hydrological modeling with SWAP to
+improve water and salt management of the voshmgir irrigation and
+drainage network in northern iran. Agricultural Water Management 98(6):
+1062–1070. doi:
+<a href="https://doi.org/10.1016/j.agwat.2011.01.013">10.1016/j.agwat.2011.01.013</a>.</p>
+<p>Oster, J.D., J. Letey, P. Vaughan, L. Wu, and M. Qadir. 2012. Comparison
+of transient state models that include salinity and matric stress
+effects on plant yield. Agricultural Water Management 103: 167–175. doi:
+<a href="https://doi.org/10.1016/j.agwat.2011.11.011">10.1016/j.agwat.2011.11.011</a>.</p>
+<p>Pan, Y., C. Yuan, and S. Jing. 2020. Simulation and optimization of
+irrigation schedule for summer maize based on SWAP model in saline
+region. International Journal of Agricultural and Biological Engineering
+13(3): 117–122. doi:
+<a href="https://doi.org/10.25165/j.ijabe.20201303.5218">10.25165/j.ijabe.20201303.5218</a>.</p>
+<p>Peters, E., G. Bier, H.A.J. van Lanen, and P.J.J.F. Torfs. 2006.
+Propagation and spatial distribution of drought in a groundwater
+catchment. Journal of Hydrology 321(1–4): 257–275. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2005.08.004">10.1016/j.jhydrol.2005.08.004</a>.</p>
+<p>Pinheiro, E.A.R., Q. de Jong van Lier, and J. Šimůnek. 2019. The role of
+soil hydraulic properties in crop water use efficiency: A process-based
+analysis for some brazilian scenarios. Agricultural Systems 173:
+364–377. doi:
+<a href="https://doi.org/10.1016/j.agsy.2019.03.019">10.1016/j.agsy.2019.03.019</a>.</p>
+<p>Pinto, V.M., I.P. Bruno, Q. de Jong van Lier, D. Dourado-Neto, and K.
+Reichardt. 2017. Environmental benefits of reducing n rates for coffee
+in the cerrado. Soil and Tillage Research 166: 76–83. doi:
+<a href="https://doi.org/10.1016/j.still.2016.10.006">10.1016/j.still.2016.10.006</a>.</p>
+<p>Pinto, V.M., J.C. van Dam, Q. de Jong van Lier, and K. Reichardt. 2019.
+Intercropping simulation using the SWAP model: Development of a 2×1D
+algorithm. Agriculture 9(6): 126. doi:
+<a href="https://doi.org/10.3390/agriculture9060126">10.3390/agriculture9060126</a>.</p>
+<p>Pinto, V.M., K. Reichardt, J. van Dam, Q. de J. van Lier, I.P. Bruno, et
+al. 2015. Deep drainage modeling for a fertigated coffee plantation in
+the brazilian savanna. Agricultural Water Management 148: 130–140. doi:
+<a href="https://doi.org/10.1016/j.agwat.2014.09.029">10.1016/j.agwat.2014.09.029</a>.</p>
+<p>Polinova, Salinas, Bonfante, and Brook. 2019. Irrigation optimization
+under a limited water supply by the integration of modern approaches
+into traditional water management on the cotton fields. Remote Sensing
+11(18): 2127. doi:
+<a href="https://doi.org/10.3390/rs11182127">10.3390/rs11182127</a>.</p>
+<p>Pollacco, J.A.P., and B.P. Mohanty. 2012. Uncertainties of water fluxes
+in soil–vegetation–atmosphere transfer models: Inverting surface soil
+moisture and evapotranspiration retrieved from remote sensing. Vadose
+Zone Journal 11(3). doi:
+<a href="https://doi.org/10.2136/vzj2011.0167">10.2136/vzj2011.0167</a>.</p>
+<p>Rab, M.A., P. Nasta, R.A. Armindo, C.R. Beverly, W.D. Reynolds, et al. 2023. Empirical equations for estimating field capacity in dryland
+cropping soils of southeastern australia. Soil and Tillage Research 234: 105816. doi:
+<a href="https://doi.org/10.1016/j.still.2023.105816">10.1016/j.still.2023.105816</a>.</p>
+<p>Rallo, G., C. Agnese, M. Minacapilli, and G. Provenzano. 2012.
+Comparison of SWAP and FAO agro-hydrological models to schedule
+irrigation of wine grapes. Journal of Irrigation and Drainage
+Engineering 138(7): 581–591. doi:
+<a href="https://doi.org/10.1061/(asce)ir.1943-4774.0000435">10.1061/(asce)ir.1943-4774.0000435</a>.</p>
+<p>Ritsema, C.J., J.C. van Dam, L.W. Dekker, and K. Oostindie. 2005. A new
+modelling approach to simulate preferential flow and transport in water
+repellent porous media: Model structure and validation. Soil Research
+43(3): 361. doi: <a href="https://doi.org/10.1071/sr05054">10.1071/sr05054</a>.</p>
+<p>Romano, N., M. Palladino, and G.B. Chirico. 2011. Parameterization of a
+bucket model for soil-vegetation-atmosphere modeling under seasonal
+climatic regimes. Hydrology and Earth System Sciences 15(12): 3877–3893.
+doi:
+<a href="https://doi.org/10.5194/hess-15-3877-2011">10.5194/hess-15-3877-2011</a>.</p>
+<p>Sabzzadeh, I., and S. Alimohammadi. 2023. Spatiotemporal simulation of
+nitrate, phosphate, and salinity in the unsaturated zone for an
+irrigation district west of iran using SWAP-ANIMO model. Journal of
+Hydrologic Engineering 28(1). doi:
+<a href="https://doi.org/10.1061/(asce)he.1943-5584.0002231">10.1061/(asce)he.1943-5584.0002231</a>.</p>
+<p>Schaik, N.L.M.B. van, A. Bronstert, S.M. de Jong, V.G. Jetten, J.C. van
+Dam, et al. 2013. Process‐based modelling of a headwater catchment in a
+semi‐arid area: The influence of macropore flow. Hydrological Processes
+28(24): 5805–5816. doi:
+<a href="https://doi.org/10.1002/hyp.10086">10.1002/hyp.10086</a>.</p>
+<p>Schaik, N.L.M.B. van, R.F.A. Hendriks, and J.C. van Dam. 2010.
+Parameterization of macropore flow using dye-tracer infiltration
+patterns in the SWAP model. Vadose Zone Journal 9(1): 95. doi:
+<a href="https://doi.org/10.2136/vzj2009.0031">10.2136/vzj2009.0031</a>.</p>
+<p>Sedaghatdoost, A., H. Ebrahimian, and A. Liaghat. 2019. An inverse
+modeling approach to calibrate parameters for a drainage model with two
+optimization algorithms on homogeneous/heterogeneous soil. Water
+Resources Management 33(4): 1383–1395. doi:
+<a href="https://doi.org/10.1007/s11269-019-2191-x">10.1007/s11269-019-2191-x</a>.</p>
+<p>Shafiei, M., B. Ghahraman, B. Saghafian, K. Davary, S. Pande, et al. 2014. Uncertainty assessment of the agro-hydrological SWAP model
+application at field scale: A case study in a dry region. Agricultural
+Water Management 146: 324–334. doi:
+<a href="https://doi.org/10.1016/j.agwat.2014.09.008">10.1016/j.agwat.2014.09.008</a>.</p>
+<p>Silva, A.J.P. da, Q. de Jong van Lier, and E.F. Coelho. 2019. Time
+stable representative position determination as affected by the
+considered part of an irrigation cycle. Computers and Electronics in
+Agriculture 157: 281–287. doi:
+<a href="https://doi.org/10.1016/j.compag.2019.01.002">10.1016/j.compag.2019.01.002</a>.</p>
+<p>Silva, A.J.P. da, E.A.R. Pinheiro, and Q. de Jong van Lier. 2020.
+Determination of soil hydraulic properties and its implications for
+mechanistic simulations and irrigation management. Irrigation Science
+38(3): 223–234. doi:
+<a href="https://doi.org/10.1007/s00271-020-00664-5">10.1007/s00271-020-00664-5</a>.</p>
+<p>Singh, R., R.K. Jhorar, J.C. van Dam, and R.A. Feddes. 2006. Distributed
+ecohydrological modelling to evaluate irrigation system performance in
+sirsa district, india II: Impact of viable water management scenarios.
+Journal of Hydrology 329(3–4): 714–723. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2006.03.016">10.1016/j.jhydrol.2006.03.016</a>.</p>
+<p>Singh, U.K., L. Ren, and S. Kang. 2010. Simulation of soil water in
+space and time using an agro-hydrological model and remote sensing
+techniques. Agricultural Water Management 97(8): 1210–1220. doi:
+<a href="https://doi.org/10.1016/j.agwat.2010.03.002">10.1016/j.agwat.2010.03.002</a>.</p>
+<p>Smets, S.M.P., M. Kuper, J.C. Van Dam, and R.A. Feddes. 1997.
+Salinization and crop transpiration of irrigated fields in pakistan’s
+punjab. Agricultural Water Management 35(1–2): 43–60. doi:
+<a href="https://doi.org/10.1016/s0378-3774(97)00031-0">10.1016/s0378-3774(97)00031-0</a>.</p>
+<p>Su, N., M. Bethune, L. Mann, and A. Heuperman. 2005. Simulating water
+and salt movement in tile-drained fields irrigated with saline water
+under a serial biological concentration management scenario.
+Agricultural Water Management 78(3): 165–180. doi:
+<a href="https://doi.org/10.1016/j.agwat.2005.02.003">10.1016/j.agwat.2005.02.003</a>.</p>
+<p>Sun, X., Y. Li, M. Heinen, H. Ritzema, P. Hellegers, et al. 2022.
+Fertigation strategies to improve water and nitrogen use efficiency in
+surface irrigation system in the north china plain. Agriculture 13(1): 17. doi:
+<a href="https://doi.org/10.3390/agriculture13010017">10.3390/agriculture13010017</a>.</p>
+<p>Szymkiewicz, A., J. Savard, and B. Jaworska-Szulc. 2019. Numerical
+analysis of recharge rates and contaminant travel time in layered
+unsaturated soils. Water 11(3): 545. doi:
+<a href="https://doi.org/10.3390/w11030545">10.3390/w11030545</a>.</p>
+<p>Taufik, M., B.I. Setiawan, and H.A.J. Van Lanen. 2018. Increased fire
+hazard in human-modified wetlands in southeast asia. Ambio 48(4):
+363–373. doi:
+<a href="https://doi.org/10.1007/s13280-018-1082-3">10.1007/s13280-018-1082-3</a>.</p>
+<p>Taufik, M., A.A. Veldhuizen, J.H.M. Wösten, and H.A.J. van Lanen. 2019.
+Exploration of the importance of physical properties of indonesian
+peatlands to assess critical groundwater table depths, associated
+drought and fire hazard. Geoderma 347: 160–169. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2019.04.001">10.1016/j.geoderma.2019.04.001</a>.</p>
+<p>Tenreiro, T.R., M. García-Vila, J.A. Gómez, J.A. Jimenez-Berni, and E.
+Fereres. 2020. Water modelling approaches and opportunities to simulate
+spatial water variations at crop field level. Agricultural Water
+Management 240: 106254. doi:
+<a href="https://doi.org/10.1016/j.agwat.2020.106254">10.1016/j.agwat.2020.106254</a>.</p>
+<p>Turek, M.E., Q. De Jong van Lier, and R.A. Armindo. 2022. Parameterizing
+field capacity as the upper limit of available water in bucket-type
+hydrological models. Computers and Electronics in Agriculture 194: 106801. doi:
+<a href="https://doi.org/10.1016/j.compag.2022.106801">10.1016/j.compag.2022.106801</a>.</p>
+<p>Turek, M.E., Q. de Jong van Lier, and R.A. Armindo. 2020. Estimation and
+mapping of field capacity in brazilian soils. Geoderma 376: 114557. doi:
+<a href="https://doi.org/10.1016/j.geoderma.2020.114557">10.1016/j.geoderma.2020.114557</a>.</p>
+<p>Urbina, C.A.F., J.C. van Dam, R.F.A. Hendriks, F. van den Berg, H.P.A.
+Gooren, et al. 2019. Water flow in soils with heterogeneous macropore
+geometries. Vadose Zone Journal 18(1): 1–17. doi:
+<a href="https://doi.org/10.2136/vzj2019.02.0015">10.2136/vzj2019.02.0015</a>.</p>
+<p>Van Dam, J.C., R. Singh, J.J.E. Bessembinder, P.A. Leffelaar, W.G.M.
+Bastiaanssen, et al. 2006. Assessing options to increase water
+productivity in irrigated river basins using remote sensing and
+modelling tools. International Journal of Water Resources Development
+22(1): 115–133. doi:
+<a href="https://doi.org/10.1080/07900620500405734">10.1080/07900620500405734</a>.</p>
+<p>Vazifedoust, M., J.C. van Dam, W.G.M. Bastiaanssen, and R.A. Feddes. 2009. Assimilation of satellite data into agrohydrological models to
+improve crop yield forecasts. International Journal of Remote Sensing
+30(10): 2523–2545. doi:
+<a href="https://doi.org/10.1080/01431160802552769">10.1080/01431160802552769</a>.</p>
+<p>Vazifedoust, M., J.C. van Dam, R.A. Feddes, and M. Feizi. 2008.
+Increasing water productivity of irrigated crops under limited water
+supply at field scale. Agricultural Water Management 95(2): 89–102. doi:
+<a href="https://doi.org/10.1016/j.agwat.2007.09.007">10.1016/j.agwat.2007.09.007</a>.</p>
+<p>Verma, A.K., S.K. Gupta, and R.K. Isaac. 2013. Calibration and
+validation of SWAP to simulate conjunctive use of fresh and saline
+irrigation waters in semi-arid regions. Environmental Modeling &amp;
+Assessment 19(1): 45–55. doi:
+<a href="https://doi.org/10.1007/s10666-013-9379-x">10.1007/s10666-013-9379-x</a>.</p>
+<p>Visser, A., J. Kroes, M. T. H. van Vliet, S. Blenkinsop, H.J. Fowler, et
+al. 2012. Climate change impacts on the leaching of a heavy metal
+contamination in a small lowland catchment. Journal of Contaminant
+Hydrology 127(1–4): 47–64. doi:
+<a href="https://doi.org/10.1016/j.jconhyd.2011.04.007">10.1016/j.jconhyd.2011.04.007</a>.</p>
+<p>Wanders, N., D. Karssenberg, M. Bierkens, R. Parinussa, R. de Jeu, et
+al. 2012. Observation uncertainty of satellite soil moisture products
+determined with physically-based modeling. Remote Sensing of Environment
+127: 341–356. doi:
+<a href="https://doi.org/10.1016/j.rse.2012.09.004">10.1016/j.rse.2012.09.004</a>.</p>
+<p>Wang, D., and X. Cai. 2009. Irrigation scheduling—role of weather
+forecasting and farmers’ behavior. Journal of Water Resources Planning
+and Management 135(5): 364–372. doi:
+<a href="https://doi.org/10.1061/(asce)0733-9496(2009)135:5(364)">10.1061/(asce)0733-9496(2009)135:5(364)</a>.</p>
+<p>Wang, X., H. Cai, L. Li, and X. Wang. 2020. Estimating soil water
+content and evapotranspiration of winter wheat under deficit irrigation
+based on SWAP model. Sustainability 12(22): 9451. doi:
+<a href="https://doi.org/10.3390/su12229451">10.3390/su12229451</a>.</p>
+<p>Wang, B., J. van Dam, X. Yang, C. Ritsema, T. Du, et al. 2023. Reducing
+water productivity gap by optimizing irrigation regime for winter
+wheat-summer maize system in the north china plain. Agricultural Water
+Management 280: 108229. doi:
+<a href="https://doi.org/10.1016/j.agwat.2023.108229">10.1016/j.agwat.2023.108229</a>.</p>
+<p>Wang, X., P.H.J. Hollanders, S. Wang, and S. Fang. 2004. Effect of field
+groundwater table control on water and salinity balance and crop yield
+in the qingtongxia irrigation district, china. Irrigation and Drainage
+53(3): 263–275. doi: <a href="https://doi.org/10.1002/ird.117">10.1002/ird.117</a>.</p>
+<p>Wang, X., L. Li, Y. Ding, J. Xu, Y. Wang, et al. 2021. Adaptation of
+winter wheat varieties and irrigation patterns under future climate
+change conditions in northern china. Agricultural Water Management 243: 106409. doi:
+<a href="https://doi.org/10.1016/j.agwat.2020.106409">10.1016/j.agwat.2020.106409</a>.</p>
+<p>Waqas, M.M., S.H.H. Shah, U.K. Awan, M. Waseem, I. Ahmad, et al. 2020.
+Evaluating the impact of climate change on water productivity of maize
+in the semi-arid environment of punjab, pakistan. Sustainability 12(9): 3905. doi: <a href="https://doi.org/10.3390/su12093905">10.3390/su12093905</a>.</p>
+<p>Wessolek, G., K. Bohne, W. Duijnisveld, and S. Trinks. 2011. Development
+of hydro-pedotransfer functions to predict capillary rise and actual
+evapotranspiration for grassland sites. Journal of Hydrology 400(3–4):
+429–437. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2011.01.059">10.1016/j.jhydrol.2011.01.059</a>.</p>
+<p>Wiesner, S., A. Gröngröft, F. Ament, and A. Eschenbach. 2016. Spatial
+and temporal variability of urban soil water dynamics observed by a soil
+monitoring network. Journal of Soils and Sediments 16(11): 2523–2537.
+doi:
+<a href="https://doi.org/10.1007/s11368-016-1385-6">10.1007/s11368-016-1385-6</a>.</p>
+<p>Willigen, P. de, J.C. van Dam, M. Javaux, and M. Heinen. 2012. Root
+water uptake as simulated by three soil water flow models. Vadose Zone
+Journal 11(3): vzj2012.0018. doi:
+<a href="https://doi.org/10.2136/vzj2012.0018">10.2136/vzj2012.0018</a>.</p>
+<p>Wit, J.A. de, M.H.J. van Huijgevoort, J.C. van Dam, G.A.P.H. van den
+Eertwegh, D. van Deijl, et al. 2024. Hydrological consequences of
+controlled drainage with subirrigation. Journal of Hydrology 628: 130432. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2023.130432">10.1016/j.jhydrol.2023.130432</a>.</p>
+<p>Xue, J., and L. Ren. 2016. Evaluation of crop water productivity under
+sprinkler irrigation regime using a distributed agro-hydrological model
+in an irrigation district of china. Agricultural Water Management 178:
+350–365. doi:
+<a href="https://doi.org/10.1016/j.agwat.2016.10.003">10.1016/j.agwat.2016.10.003</a>.</p>
+<p>Xue, J., and L. Ren. 2023. Simulating the impact of subsurface pipe
+drainage systems on crop water productivity at a regional scale in the
+upper yellow river basin. Irrigation and Drainage 73(2): 627–648. doi:
+<a href="https://doi.org/10.1002/ird.2887">10.1002/ird.2887</a>.</p>
+<p>Xu, X., G. Huang, C. Sun, L.S. Pereira, T.B. Ramos, et al. 2013.
+Assessing the effects of water table depth on water use, soil salinity
+and wheat yield: Searching for a target depth for irrigated areas in the
+upper yellow river basin. Agricultural Water Management 125: 46–60. doi:
+<a href="https://doi.org/10.1016/j.agwat.2013.04.004">10.1016/j.agwat.2013.04.004</a>.</p>
+<p>Xu, X., G. Huang, H. Zhan, Z. Qu, and Q. Huang. 2012. Integration of
+SWAP and MODFLOW-2000 for modeling groundwater dynamics in shallow water
+table areas. Journal of Hydrology 412–413: 170–181. doi:
+<a href="https://doi.org/10.1016/j.jhydrol.2011.07.002">10.1016/j.jhydrol.2011.07.002</a>.</p>
+<p>Xu, X., Y. Jiang, M. Liu, Q. Huang, and G. Huang. 2019. Modeling and
+assessing agro-hydrological processes and irrigation water saving in the
+middle heihe river basin. Agricultural Water Management 211: 152–164.
+doi:
+<a href="https://doi.org/10.1016/j.agwat.2018.09.033">10.1016/j.agwat.2018.09.033</a>.</p>
+<p>Xu, X., C. Sun, F. Neng, J. Fu, and G. Huang. 2018. AHC: An integrated
+numerical model for simulating agroecosystem processes—model description
+and application. Ecological Modelling 390: 23–39. doi:
+<a href="https://doi.org/10.1016/j.ecolmodel.2018.10.015">10.1016/j.ecolmodel.2018.10.015</a>.</p>
+<p>Xu, X., C. Sun, Z. Qu, Q. Huang, T.B. Ramos, et al. 2015. Groundwater
+recharge and capillary rise in irrigated areas of the upper yellow river
+basin assessed by an agro‐hydrological model. Irrigation and Drainage
+64(5): 587–599. doi:
+<a href="https://doi.org/10.1002/ird.1928">10.1002/ird.1928</a>.</p>
+<p>Xu, X., G. Yang, Y. Tan, Q. Zhuang, H. Li, et al. 2016. Ecological risk
+assessment of ecosystem services in the taihu lake basin of china from
+1985 to 2020. Science of The Total Environment 554–555: 7–16. doi:
+<a href="https://doi.org/10.1016/j.scitotenv.2016.02.120">10.1016/j.scitotenv.2016.02.120</a>.</p>
+<p>Yuan, C. 2020. Simulation soil water–salt dynamics in saline wasteland
+of yongji irrigation area in hetao irrigation district of china. Water
+Supply 21(6): 2681–2690. doi:
+<a href="https://doi.org/10.2166/ws.2020.299">10.2166/ws.2020.299</a>.</p>
+<p>Yuan, C., S. Feng, Z. Huo, and Q. Ji. 2019. Simulation of saline water
+irrigation for seed maize in arid northwest china based on SWAP model.
+Sustainability 11(16): 4264. doi:
+<a href="https://doi.org/10.3390/su11164264">10.3390/su11164264</a>.</p>
+<p>Yuan, C., S. Feng, J. Wang, Z. Huo, and Q. Ji. 2018. Effects of
+irrigation water salinity on soil salt content distribution, soil
+physical properties and water use efficiency of maize for seed
+production in arid northwest china. International Journal of
+Agricultural and Biological Engineering 11(3): 137–145. doi:
+<a href="https://doi.org/10.25165/j.ijabe.20181103.3146">10.25165/j.ijabe.20181103.3146</a>.</p>
+<p>Zhao, Y., X. Mao, and M.K. Shukla. 2020. A modified SWAP model for soil
+water and heat dynamics and seed–maize growth under film mulching.
+Agricultural and Forest Meteorology 292–293: 108127. doi:
+<a href="https://doi.org/10.1016/j.agrformet.2020.108127">10.1016/j.agrformet.2020.108127</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../wiki/input-files/bbc-file/" class="md-footer__link md-footer__link--prev" aria-label="Previous: .BBC">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                .BBC
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ford_docs/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                API Reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
