@@ -1,0 +1,79 @@
+site_name: SWAP hydrological model
+exclude_docs: |
+  metadata.md
+
+nav:
+  - Getting Started: getting-started.md
+  - Wiki:
+    - wiki/input-files/input-files.md
+    - wiki/input-files/swp-file.md
+    - wiki/input-files/met-file.md
+    - wiki/input-files/crp-file.md
+    - wiki/input-files/dra-file.md
+    - wiki/input-files/bbc-file.md
+  - Swap in action: refs.md
+  - API Reference: ./ford_docs/index.html
+
+theme:
+  name: material
+  logo: public/SWAP_icon.png
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: "Switch to Dark Mode"
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off
+        name: "Switch to Light Mode"
+      primary: teal
+      accent: lime
+plugins:
+  - search
+  - include-markdown
+
+markdown_extensions:
+  - footnotes
+  - admonition
+  - codehilite
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - toc:
+      permalink: true
+      separator: "_"
+      toc_depth: 2

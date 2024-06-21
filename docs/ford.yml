@@ -1,0 +1,8 @@
+project: API reference SWAP
+  author: Multiple Authors
+  summary: API reference for the SWAP hydrological model source code.
+  src_dir: ../src/included
+  output_dir: ./docs/ford_docs
+  project_website: https://www.swap.alterra.nl/
+  doc_home_page: /
+  github: https://github.com/orgs/SWAP-model/SWAP
