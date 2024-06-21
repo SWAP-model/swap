@@ -33,7 +33,7 @@ jobs:
         run: poetry install
 
       - name: Build ford site
-        run: ford ford.yml
+        run: poetry run ford ford.yml
 
       - name: Build MkDocs site
         run: poetry run mkdocs gh-deploy --config-file mkdocs.yml --force
