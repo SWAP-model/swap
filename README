@@ -1,3 +1,5 @@
+[![Build & publish docs](https://github.com/SWAP-model/swap/actions/workflows/deploy_docs.yaml/badge.svg)](https://github.com/SWAP-model/swap/actions/workflows/deploy_docs.yaml)
+
 Welcome to the repository of the SWAP hydrological model. Here you will find the source code of the model, discussions about its features and future and the docuemntation page.
 
 This page will get more content soon!
