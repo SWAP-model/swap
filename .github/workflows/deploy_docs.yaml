@@ -30,7 +30,7 @@ jobs:
         run: curl -sSL https://install.python-poetry.org | python3 -
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-root
 
       - name: Build ford site
         run: poetry run ford ford.yml
