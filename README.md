@@ -8,5 +8,6 @@ This page will get more content soon! In the meantime, you can look around the d
 
 Take a looks also at the related repositories:
 
-[rswap](https://github.com/moritzshore/rswap) - R package for SWAP
-[pyswap](https://github.com/zawadzkim/pySWAP) - Python package for SWAP 
+- [rswap](https://github.com/moritzshore/rswap) - R package for SWAP
+
+- [pyswap](https://github.com/zawadzkim/pySWAP) - Python package for SWAP 
